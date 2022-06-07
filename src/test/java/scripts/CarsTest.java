@@ -28,8 +28,13 @@ public class CarsTest extends Base{
         homePage.signInLink.click(); // When user clicks on top right “Sign In” link
         Assert.assertEquals(driver.getCurrentUrl(), "https://www.cars.com/signin/?redirect_path=%2F"); // Then user should be navigated to “Sign in” page
 
-        Assert.assertEquals(signInPage.signInHeading.getText(), "Sign in"); // And user should be able to see heading1 as "Sign in"
-        Assert.assertEquals(signInPage.newToCarsParagraph.getText(), "New to Cars.com? Sign up. Are you a dealer?");// And user should be able to see paragraph under “Sign in” header as “New to Cars.com? Sign up. Are you a dealer?”
+        // And user should be able to see heading1 as "Sign in"
+        Assert.assertTrue(signInPage.socialsHeading.isDisplayed());
+        Assert.assertEquals(signInPage.signInHeading.getText(), "Sign in");
+
+        // And user should be able to see paragraph under “Sign in” header as “New to Cars.com? Sign up. Are you a dealer?”
+        Assert.assertTrue(signInPage.newToCarsParagraph.isDisplayed());
+        Assert.assertEquals(signInPage.newToCarsParagraph.getText(), "New to Cars.com? Sign up. Are you a dealer?");
 
         // And user should be able to see Email input box with “Email” label and enabled
         Assert.assertTrue(signInPage.emailInputBox.isDisplayed());
@@ -41,9 +46,17 @@ public class CarsTest extends Base{
         Assert.assertTrue(signInPage.passwordInputBox.isEnabled());
         Assert.assertEquals(signInPage.passwordInputBoxLabel.getText(), "Password");
 
-        Assert.assertEquals(signInPage.minimumCharsParagraph.getText(), "Minimum of eight characters"); // And user should be able to see warning under Password input box as “Minimum of eight characters”
-        Assert.assertEquals(signInPage.forgetPasswordLink.getText(), "Forgot password?");// And user should be able to see link as “Forgot password?” under the Password input box
-        Assert.assertEquals(signInPage.disclaimerParagraph.getText(), "By signing in to your profile, you agree to our  Privacy Statement  and  Terms of Service.");//And user should be able to see “By signing in to your profile, you agree to our Privacy Statement and Terms of Service.” text
+        // And user should be able to see warning under Password input box as “Minimum of eight characters”
+        Assert.assertTrue(signInPage.minimumCharsParagraph.isDisplayed());
+        Assert.assertEquals(signInPage.minimumCharsParagraph.getText(), "Minimum of eight characters");
+
+        // And user should be able to see link as “Forgot password?” under the Password input box
+        Assert.assertTrue(signInPage.forgetPasswordLink.isDisplayed());
+        Assert.assertEquals(signInPage.forgetPasswordLink.getText(), "Forgot password?");
+
+        //And user should be able to see “By signing in to your profile, you agree to our Privacy Statement and Terms of Service.” text
+        Assert.assertTrue(signInPage.disclaimerParagraph.isDisplayed());
+        Assert.assertEquals(signInPage.disclaimerParagraph.getText(), "By signing in to your profile, you agree to our  Privacy Statement  and  Terms of Service.");
 
         //And user should be able to “Sign in” button with its text and be displayed and enabled
         Assert.assertTrue(signInPage.signInButton.isDisplayed());
@@ -67,7 +80,9 @@ public class CarsTest extends Base{
         homePage.signInLink.click(); // When user clicks on top right “Sign In” link
         Assert.assertEquals(driver.getCurrentUrl(), "https://www.cars.com/signin/?redirect_path=%2F"); // Then user should be navigated to “Sign in” page
 
-        Assert.assertEquals(signInPage.socialsHeading.getText(), "Connect with social");// And user should be able to see headings as "Connect with social"
+        // And user should be able to see headings as "Connect with social"
+        Assert.assertTrue(signInPage.socialsHeading.isDisplayed());
+        Assert.assertEquals(signInPage.socialsHeading.getText(), "Connect with social");
 
         /* And user should be able to “Sign in with Facebook” link with its text and be displayed and enabled
         And user should be able to “Sign in with Google” link with its text and be displayed and enabled
@@ -104,6 +119,7 @@ public class CarsTest extends Base{
 
         /* Then user should not be logged in and displayed an error message on the top of the form as below:
         “We were unable to sign you in. Your email or password was not recognized. Try again soon.” */
+        Assert.assertTrue(signInPage.errorMessage.isDisplayed());
         Assert.assertEquals(signInPage.errorMessage.getText(), "We were unable to sign you in.\nYour email or password was not recognized. Try again soon.");
     }
 
