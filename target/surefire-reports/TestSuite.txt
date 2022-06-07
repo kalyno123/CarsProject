@@ -1,0 +1,8 @@
+-------------------------------------------------------------------------------
+Test set: TestSuite
+-------------------------------------------------------------------------------
+Tests run: 3, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 38.808 sec <<< FAILURE! - in TestSuite
+signInForm(scripts.CarsTest)  Time elapsed: 3.319 sec  <<< FAILURE!
+java.lang.AssertionError: expected [https://www.cars.com/signin/?redirect_path=%2F] but found [https://www.cars.com/]
+	at scripts.CarsTest.signInForm(CarsTest.java:29)
+
